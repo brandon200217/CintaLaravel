@@ -1,2 +1,2 @@
-# CintasLaravel
+# CintasLaravelProyecto
 proyecto personal con laravel
