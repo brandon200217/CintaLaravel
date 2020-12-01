@@ -1,0 +1,29 @@
+body{
+    font-family: $parrafos-font-family;
+}
+
+.bg-primary .navbar-brand{
+    color: white;
+    font-size: 1.5rem;
+}
+
+.navbar-nav{
+    font-size: 1rem;
+
+}
+
+.navbar-light .navbar-nav .nav-link{
+    color: white;
+    &:hover{
+        color: rgb(0, 0, 0); 
+    }
+}
+
+.card-header{
+    font-size: 1.4rem;
+}
+
+/*.btn{
+    
+    border-radius: 0.65rem;
+}*/
