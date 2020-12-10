@@ -16,9 +16,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/cintas','App\Http\Controllers\CintasController@index')->name('cintas.index');
+
+Route::get('/cintas/create','App\Http\Controllers\CintasController@create')->name('cintas.create');
+
+Route::post('/cintas','App\Http\Controllers\CintasController@store')->name('cintas.store');
 
 
-Route::get('/cintas','App\Http\Controllers\CintasController');
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -41,4 +41,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    //relacion de uno a mucho (un usuario puede tener multiples cintas)
+
+    public function cintas(){
+
+        return $this->hasMany(Cinta::class);
+    
+    }
 }

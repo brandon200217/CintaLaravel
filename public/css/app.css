@@ -1,11 +1,6 @@
-@import url(https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Fredoka+One&display=swap);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Fredoka+One&display=swap);@import url(https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;
 
-/*!
- * Bootstrap v4.5.3 (https://getbootstrap.com/)
- * Copyright 2011-2020 The Bootstrap Authors
- * Copyright 2011-2020 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
- */
+800&family=Work+Sans:wght@300&display=swap);@charset "UTF-8";
 
 :root {
   --blue: #155f9b;
@@ -10928,8 +10923,90 @@ body {
   font-size: 1.4rem;
 }
 
-/*.btn{
+.table {
+  font-family: "Nanum Gothic", sans-serif;
+}
 
-    border-radius: 0.65rem;
-}*/
+.Administrador {
+  font-family: "Nanum Gothic", sans-serif;
+}
+
+trix-editor {
+  min-height: 200px;
+}
+
+.btn-eliminar {
+  text-decoration: none;
+  border-radius: 10px;
+  color: white;
+  padding-top: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  font-size: 15px;
+  font-family: inherit;
+  background: linear-gradient(127deg, #c71c10 0%, #c41e08 100%);
+}
+
+.btn-eliminar:hover {
+  background: linear-gradient(327deg, #cf351a 0%, #db531d 100%);
+  box-shadow: 0 0px 10px #0a1415;
+  transition: all 0.3s ease;
+  padding-top: 12px;
+  padding-right: 12px;
+  padding-bottom: 12px;
+  padding-left: 12px;
+  color: black;
+  text-decoration: none;
+}
+
+.btn-editar {
+  text-decoration: none;
+  border-radius: 10px;
+  color: white;
+  padding-top: 10px;
+  padding-right: 18px;
+  padding-bottom: 10px;
+  padding-left: 18px;
+  font-size: 15px;
+  font-family: inherit;
+  background: linear-gradient(127deg, #560a8a 0%, #640c9e 100%);
+}
+
+.btn-editar:hover {
+  background: linear-gradient(327deg, #9f26cf 0%, #aa23df 100%);
+  box-shadow: 0 0px 10px #0a1415;
+  transition: all 0.3s ease;
+  padding-top: 12px;
+  padding-right: 20px;
+  padding-bottom: 12px;
+  padding-left: 20px;
+  color: black;
+  text-decoration: none;
+}
+
+.btn-ver {
+  text-decoration: none;
+  border-radius: 10px;
+  color: white;
+  padding-top: 10px;
+  padding-right: 26px;
+  padding-bottom: 10px;
+  padding-left: 26px;
+  font-size: 15px;
+  font-family: inherit;
+  background: linear-gradient(127deg, #093186 0%, #0a5897 100%);
+}
+
+.btn-ver:hover {
+  background: linear-gradient(327deg, #2b53aa 0%, #2a579b 100%);
+  box-shadow: 0 0px 10px #0a1415;
+  transition: all 0.3s ease;
+  padding-top: 12px;
+  padding-right: 28px;
+  padding-bottom: 12px;
+  padding-left: 28px;
+  color: black;
+  text-decoration: none;
+}
 

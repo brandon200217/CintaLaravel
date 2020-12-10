@@ -15,15 +15,19 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    @yield('estilos')
+
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-primary shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+        <nav class="navbar navbar-expand-md navbar-light bg-primary shadow-sm ">
+            <div class="container ">
+                <a class="navbar-brand animate__animated  animate__flip " href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -75,9 +79,23 @@
             </div>
         </nav>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+
+                    <main class="py-4 mt-5 col-12">
+                        @yield('content')
+                    </main>
+                    
+                    <div class="py-4 mt-5 col-12">
+                        @yield('botones')
+                    </div>  
+
+                </div>              
+            </div>
+        </div>
     </div>
+
+    @yield('scripts')
 </body>
 </html>
