@@ -22,6 +22,8 @@ Route::get('/cintas/create','App\Http\Controllers\CintasController@create')->nam
 
 Route::post('/cintas','App\Http\Controllers\CintasController@store')->name('cintas.store');
 
+Route::get('/cintas/{cinta}','App\Http\Controllers\CintasController@show')->name('cintas.show');
+
 
 Auth::routes();
 

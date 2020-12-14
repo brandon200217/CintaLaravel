@@ -43,7 +43,7 @@ class CreateCintasTable extends Migration
     public function down()
     {
         Schema::dropIfExists('cintas');
-        Schema::dropIfExists('categoria'); 
+        Schema::dropIfExists('categorias'); 
         
     }
 }

@@ -10935,7 +10935,7 @@ trix-editor {
   min-height: 200px;
 }
 
-.btn-eliminar {
+a.btn-eliminar {
   text-decoration: none;
   border-radius: 10px;
   color: white;
@@ -10948,7 +10948,7 @@ trix-editor {
   background: linear-gradient(127deg, #c71c10 0%, #c41e08 100%);
 }
 
-.btn-eliminar:hover {
+a.btn-eliminar:hover {
   background: linear-gradient(327deg, #cf351a 0%, #db531d 100%);
   box-shadow: 0 0px 10px #0a1415;
   transition: all 0.3s ease;
@@ -10960,7 +10960,7 @@ trix-editor {
   text-decoration: none;
 }
 
-.btn-editar {
+a.btn-editar {
   text-decoration: none;
   border-radius: 10px;
   color: white;
@@ -10973,7 +10973,7 @@ trix-editor {
   background: linear-gradient(127deg, #560a8a 0%, #640c9e 100%);
 }
 
-.btn-editar:hover {
+a.btn-editar:hover {
   background: linear-gradient(327deg, #9f26cf 0%, #aa23df 100%);
   box-shadow: 0 0px 10px #0a1415;
   transition: all 0.3s ease;
@@ -10985,7 +10985,7 @@ trix-editor {
   text-decoration: none;
 }
 
-.btn-ver {
+a.btn-ver {
   text-decoration: none;
   border-radius: 10px;
   color: white;
@@ -10998,7 +10998,7 @@ trix-editor {
   background: linear-gradient(127deg, #093186 0%, #0a5897 100%);
 }
 
-.btn-ver:hover {
+a.btn-ver:hover {
   background: linear-gradient(327deg, #2b53aa 0%, #2a579b 100%);
   box-shadow: 0 0px 10px #0a1415;
   transition: all 0.3s ease;
@@ -11008,5 +11008,13 @@ trix-editor {
   padding-left: 28px;
   color: black;
   text-decoration: none;
+}
+
+.image-cintas img {
+  height: 600px;
+  border-radius: 1%;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size: 100% auto;
 }
 

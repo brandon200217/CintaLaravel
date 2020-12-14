@@ -28,8 +28,8 @@
 
                 @foreach($cintas as $key => $cinta)
                     <tr>
-                        <td>{{$cinta->Titulo}}</td>
-                        <td>{{$cinta->categoria->nombre}}</td>
+                        <td><strong>{{$cinta->Titulo}}</strong></td>
+                        <td><strong>{{$cinta->categoria->nombre}}</strong></td>
                         <td>
                             <div class="section">
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 
+use App\Models\Cinta;
 use App\Models\Categoria;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -106,7 +107,7 @@ class CintasController extends Controller
      */
     public function show(Cinta $cinta)
     {
-        //
+        return view("cintas.show")->with("cinta",$cinta);
     }
 
     /**
