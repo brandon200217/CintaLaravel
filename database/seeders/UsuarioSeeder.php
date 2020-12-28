@@ -2,10 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 
 class UsuarioSeeder extends Seeder
 {
@@ -16,7 +17,7 @@ class UsuarioSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
+        $user = User::create([
             'name'=> "brandon",
             'email'=> Str::random(10).'@gmail.com',
             'password'=> Hash::make('modelo'),
@@ -25,7 +26,10 @@ class UsuarioSeeder extends Seeder
             'updated_at'=> date('Y-m-d H:i:s'),
         ]);
 
-        DB::table('users')->insert([
+
+        $user->perfil()->create();
+
+        $user2 = User::create([
             'name'=> Str::random(10),
             'email'=> Str::random(10).'@gmail.com',
             'password'=> Hash::make('vista'),
@@ -34,14 +38,7 @@ class UsuarioSeeder extends Seeder
             'updated_at'=> date('Y-m-d H:i:s'),
         ]);
 
-        DB::table('users')->insert([
-            'name'=> Str::random(10),
-            'email'=> Str::random(10).'@gmail.com',
-            'password'=> Hash::make('controlador'),
-            'sexo'=> 'h',
-            'created_at'=> date('Y-m-d H:i:s'),
-            'updated_at'=> date('Y-m-d H:i:s'),
-        ]);
+        $user2->perfil()->create();
 
     }
 }

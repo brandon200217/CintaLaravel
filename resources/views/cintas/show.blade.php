@@ -2,7 +2,7 @@
 
 
 @section('content')
-
+    <meta charset="utf8">
 
 
     <article class="contenido-cintas">
@@ -25,7 +25,7 @@
                 
             <p>
                 <span class=" font-weight-bold text-primary">Autor:</span>
-                {{$cinta->user_id}}
+                {{$cinta->autor->name}}
             </p>
 
             <p>
@@ -58,11 +58,23 @@
 
         <div class="protagonistas">
             <h3 class="my-3 text-primary">Protagonistas:</h3>
-         
+            
                {!!$cinta->Protagonistas!!}
         
         </div>
+        {{$cantidadLikes}}
+        <like-button 
+        
+            id ="like" 
+            class="justify-content-center d-flex" 
+            cantidadLikes = {{$cantidadLikes}}
+            id-Cinta = {{$cinta->id}}  
+            likeUser = {{$like}}>
+            
+
+        </like-button>
   
+ 
     </article>
 
 @endsection

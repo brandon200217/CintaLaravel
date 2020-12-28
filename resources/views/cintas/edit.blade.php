@@ -15,14 +15,16 @@
 
 @section('content')
 
-    <h2 class="Administrador text-center mb-5">Crear una Critica</h2>
+    <h2 class="Administrador text-center mb-5">Editar Critica de {{$cintas->Titulo}}</h2>
 
     <div class="row justify-content-center mt-5">
         
         <div class="col-md-8">
 
-            <form method="POST" action="{{route('cintas.store')}}" enctype="multipart/form-data" novalidate>
+            <form method="POST" action="{{route('cintas.update', ['cinta' => $cintas->id ])}}" enctype="multipart/form-data" novalidate>
                 @csrf
+
+                @method('PUT')
                 <div class="form-group">
                     
                     <label for="titulo">Titulo de critica</label>
@@ -32,7 +34,7 @@
                         class="form-control @error('titulo') is-invalid @enderror"
                         id="titulo"
                         placeholder="Titulo de critica"
-                        value={{old('titulo')}}>
+                        value="{{$cintas->Titulo}}">
                         
                     </>    
 
@@ -59,7 +61,7 @@
 
                             <option 
                                 value="{{$categoria->id}}"
-                                {{old("categoria") == $categoria->id ? "selected" : ""}}>
+                                {{$cintas->categoria_id == $categoria->id ? "selected" : ""}}>
                                 {{$categoria->nombre}}
                             </option> 
                         @endforeach
@@ -80,7 +82,7 @@
                     <input type="hidden" 
                         id="sinopsis" 
                         name="sinopsis" 
-                        value="{{old('sinopsis')}}">
+                        value="{{$cintas->Sinopsis}}">
 
                     <trix-editor input="sinopsis" class="trix-content form-control @error('sinopsis') is-invalid @enderror"></trix-editor>
                     
@@ -98,7 +100,7 @@
                     <input type="hidden" 
                         id="Protagonistas" 
                         name="Protagonistas" 
-                        value="{{old('Protagonistas')}}">
+                        value="{{$cintas->Protagonistas}}">
 
                     <trix-editor input="Protagonistas" class="trix-content form-control @error('Protagonistas') is-invalid @enderror"></trix-editor>
                     
@@ -115,7 +117,7 @@
                     <input type="hidden" 
                         id="Analisis" 
                         name="Analisis" 
-                        value="{{old('Analisis')}}">
+                        value="{{$cintas->Analisis}}">
 
                     <trix-editor input="Analisis" class="trix-content form-control @error('Analisis') is-invalid @enderror"></trix-editor>
                     
@@ -128,8 +130,14 @@
                 
                 <div class="form-group">
                     <label for="imagen">Elige una Imagen</label>
-                    <input type="file" name="imagen" class="form-control @error('imagen') is-invalid @enderror id="imagen">
+                    
+                    <input type="file" name="imagen" class="form-control @error('imagen') is-invalid @enderror id='imagen'">
 
+                    <div class=" mt-4">
+                        <p>Imagen Actual:</p>
+                        <img src="/storage/{{$cintas->imagen}}" style="width:300px">
+                    </div>
+                    
                     @error('imagen')
                         <span class="invalid-feedback  d-block" role="alert">
                             <strong>{{$message}}</strong>
@@ -140,7 +148,7 @@
 
 
                 <div class="form-group">
-                    <input type="submit" class="btn btn-primary" value="Agregar Critica">        
+                    <input type="submit" class="btn btn-primary" value="Actualizar Critica">        
                 </div>
             </form>
 

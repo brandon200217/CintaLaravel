@@ -16,7 +16,7 @@ class CintasController extends Controller
 
     public function __construct(){
 
-        $this->middleware("auth");
+        $this->middleware("auth", ["except" => "show"]);
 
     }
 
@@ -28,11 +28,15 @@ class CintasController extends Controller
     public function index()
     {
 
-        $cintas = Auth::user()->cintas;
+        //$cintas = Auth::user()->cintas;
 
- 
+        
 
-        return view("cintas.index")->with("cintas",$cintas);
+        $usuario = auth()->user()->id;
+
+        $cintas = Cinta::where("user_id",$usuario)->paginate(1);
+
+        return view("cintas.index",compact("cintas"));
     }
 
     /**
@@ -48,7 +52,7 @@ class CintasController extends Controller
 
 
         //Obtener categorias con modelo
-        $categoria = Categoria::all();
+        $categoria = Categoria::all(["id","nombre"]);
 
         return view("cintas.create")->with("categorias",$categoria);
     }
@@ -107,7 +111,14 @@ class CintasController extends Controller
      */
     public function show(Cinta $cinta)
     {
-        return view("cintas.show")->with("cinta",$cinta);
+
+        $like = (auth()->user()) ? auth()->user()->likesUsuarios->contains($cinta->id) : false;
+
+        $cantidadLikes = auth()->user()->likesUsuarios->count();
+        //$cantidadLikes = $cinta->likesCinta->count();
+
+    
+        return view("cintas.show")->with("cinta",$cinta)->with("like",$like)->with("cantidadLikes",$cantidadLikes);
     }
 
     /**
@@ -118,7 +129,13 @@ class CintasController extends Controller
      */
     public function edit(Cinta $cinta)
     {
-        //
+        $this->authorize("view",$cinta);
+       
+        $categoria = Categoria::all(["id","nombre"]);
+        
+       
+        
+        return view("cintas.edit")->with("categorias",$categoria)->with("cintas",$cinta);
     }
 
     /**
@@ -130,7 +147,37 @@ class CintasController extends Controller
      */
     public function update(Request $request, Cinta $cinta)
     {
-        //
+
+        $this->authorize("update", $cinta);
+
+        $data = $request->validate([
+            'titulo' => 'required',
+            'categoria' => 'required',
+            'sinopsis' => 'required',
+            'Protagonistas' => 'required',
+            'Analisis' => 'required',
+         
+        ]);
+
+        $cinta->titulo = $data["titulo"];
+        $cinta->categoria_id = $data["categoria"];
+        $cinta->sinopsis = $data["sinopsis"];
+        $cinta->Protagonistas = $data["Protagonistas"];
+        $cinta->Analisis = $data["Analisis"];
+
+        if(request("imagen")){
+
+            $ruta_imagen =  $request['imagen']->store("imagenesCintas","public");    
+            $image = Image::make(public_path("storage/{$ruta_imagen}"))->fit(1200,550);
+            $image->save();
+        
+            $cinta->imagen = $ruta_imagen;
+        }    
+
+
+        $cinta->save();
+
+        return redirect()->action([CintasController::class, 'index']);
     }
 
     /**
@@ -141,6 +188,13 @@ class CintasController extends Controller
      */
     public function destroy(Cinta $cinta)
     {
-        //
+
+        $this->authorize("delete", $cinta);
+
+        
+        $cinta->delete();
+
+        return redirect()->action([CintasController::class, "index"]);
+
     }
 }

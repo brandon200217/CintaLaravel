@@ -13,3 +13,11 @@ require('./bootstrap');
  */
 
 require('./components/FechaPublicacion');
+require('./components/LikeButton');
+//require('./components/EliminarCriticas');
+
+/*$('.like-btn').on('click', function() {
+    $(this).toggleClass('like-active');
+ });
+*/
+ 

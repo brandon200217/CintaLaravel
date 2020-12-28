@@ -10931,31 +10931,39 @@ body {
   font-family: "Nanum Gothic", sans-serif;
 }
 
-trix-editor {
-  min-height: 200px;
+.trix-content {
+  height: 250px;
+  overflow-y: auto;
 }
 
-a.btn-eliminar {
+.section {
+  display: flex;
+}
+
+input.btn-eliminar {
   text-decoration: none;
   border-radius: 10px;
   color: white;
   padding-top: 10px;
-  padding-right: 10px;
+  padding-right: 14px;
   padding-bottom: 10px;
-  padding-left: 10px;
+  padding-left: 12px;
   font-size: 15px;
   font-family: inherit;
-  background: linear-gradient(127deg, #c71c10 0%, #c41e08 100%);
+  background: linear-gradient(127deg, #df4141 0%, #f13f3f 100%);
+  border: none;
+  text-align: left;
 }
 
-a.btn-eliminar:hover {
+input.btn-eliminar:hover {
   background: linear-gradient(327deg, #cf351a 0%, #db531d 100%);
   box-shadow: 0 0px 10px #0a1415;
   transition: all 0.3s ease;
   padding-top: 12px;
-  padding-right: 12px;
+  padding-right: 16px;
   padding-bottom: 12px;
-  padding-left: 12px;
+  padding-left: 14px;
+  font-size: 15px;
   color: black;
   text-decoration: none;
 }
@@ -11016,5 +11024,65 @@ a.btn-ver:hover {
   background-repeat: no-repeat;
   background-position: 50%;
   background-size: 100% auto;
+}
+
+.icon {
+  width: 20px;
+}
+
+.like-btn {
+  display: inline-block;
+  Cursor: pointer;
+  width: 80px;
+  height: 80px;
+}
+
+.like-btn {
+  background: url("https://i.ibb.co/vw78mf3/heart.png") no-repeat 0% 50%;
+  background-size: 2900%;
+}
+
+.like-active {
+  -webkit-animation-name: animate;
+          animation-name: animate;
+  -webkit-animation-duration: 0.8s;
+          animation-duration: 0.8s;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+.like-active {
+  -webkit-animation-timing-function: steps(28);
+          animation-timing-function: steps(28);
+}
+
+@-webkit-keyframes animate {
+  0% {
+    background-position: left;
+  }
+
+  50% {
+    background-position: right;
+  }
+
+  100% {
+    background-position: right;
+  }
+}
+
+@keyframes animate {
+  0% {
+    background-position: left;
+  }
+
+  50% {
+    background-position: right;
+  }
+
+  100% {
+    background-position: right;
+  }
 }
 

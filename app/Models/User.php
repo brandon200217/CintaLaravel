@@ -42,11 +42,37 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    protected static function boot(){
+
+        parent::boot();
+
+
+        static::created(function($user){
+            
+            $user->perfil()->create();
+        });
+
+    }
+
     //relacion de uno a mucho (un usuario puede tener multiples cintas)
 
     public function cintas(){
 
         return $this->hasMany(Cinta::class);
+    
+    }
+
+     //relacion de uno a uno (un usuario puede tener un perfil)
+
+    public function perfil(){
+
+        return $this->hasOne(Perfil::class);
+    
+    }
+
+    public function likesUsuarios(){
+
+        return $this->belongsToMany(Cinta::class,"likes_cintas");
     
     }
 }
