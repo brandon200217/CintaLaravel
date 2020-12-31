@@ -59,9 +59,35 @@
             {{$cintas->links()}}
         
         </div>
-        
-        
+            
     </div>
 
 @endsection
 
+@section('me gustas')
+    <h2 class="text-center my-3">Ultimos Likes</h2>
+    <div class="col-md-8 mx-auto bg-primary p-4">
+                
+        @if($usuario->likesUsuarios->count() > 0 && $usuario->likesUsuarios->count() <= 5 )
+            <ul class="list-group">
+                @foreach($usuario->likesUsuarios as $cintas)
+                    <li class="list-group-item d-flex justify-content-between align-items-center">       
+                    
+                        <span class="like-btn like-active"></span>
+                        <p>{{$cintas->Titulo}}</p>
+                        <a class="btn btn-outline-info text-uppercase font-weight-bold" href="{{route('cintas.show' , ['cinta' => $cintas->id ])}}">Ver</a>
+                    </li>
+      
+                @endforeach
+            </ul>
+        @else
+
+            <div class=" justify-content-center text-center">
+                <p class="text-center">Aun no tienes ningun Me gusta</p>
+                <p><small>Busca Criticas que te gusten</small></p>
+            </div>
+
+        @endif
+            
+    </div>
+@endsection

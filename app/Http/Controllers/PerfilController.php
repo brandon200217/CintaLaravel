@@ -22,7 +22,7 @@ class PerfilController extends Controller
     public function show(Perfil $perfil)
     {
 
-        $cintas = Cinta::where("user_id",$perfil->id)->paginate(1);
+        $cintas = Cinta::where("user_id",$perfil->id)->paginate(3);
 
         return view("perfiles.show",compact("perfil","cintas"));
     }

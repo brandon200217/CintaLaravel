@@ -4,7 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\CintasController;
+use App\Http\Controllers\InicioController;
 use App\Http\Controllers\PerfilController;
+use App\Http\Controllers\CategoriasController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,7 +24,7 @@ Route::get('/', function () {
 });
 
 
-Route::get('/inicio',[HomeController::class, 'index'])->name('home.index');
+Route::get('/inicio',[InicioController::class, 'index'])->name('inicio.index');
 
 Route::get('/cintas',[CintasController::class, 'index'])->name('cintas.index');
 
@@ -47,6 +50,11 @@ Route::put('/perfiles/{perfil}/',[PerfilController::class, 'update'])->name('per
 
 
 Route::post('/cintas/{cinta}' , [LikeController::class,"update"])->name("likes.update");
+
+
+
+Route::get('/categoria/{categoriaCinta}',[CategoriasController::class, 'show'])->name('categorias.show');
+
 
 
 Auth::routes();

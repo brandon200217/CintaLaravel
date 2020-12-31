@@ -62,7 +62,6 @@
                {!!$cinta->Protagonistas!!}
         
         </div>
-        {{$cantidadLikes}}
         <like-button 
         
             id ="like" 

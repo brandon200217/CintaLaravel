@@ -49,9 +49,9 @@
                         </div>
 
                    @endforeach
-                @else{
+                @else
                     <p class="text-center w-100"> No hay publicaciones aun ...</p>
-                }
+                
                 @endif
 
 
@@ -62,11 +62,12 @@
                     {{$cintas->links()}}
                 </div>
             
-                @else{
-                    <div class="col-12 mt-4 justify-content-center d-flex">
-                        {{$cintas->links()}}
-                    </div>
-                }
+            @else
+                
+                <div class="col-12 mt-4 justify-content-center d-flex">
+                    {{$cintas->links()}}
+                </div>
+            
             
             @endif
 
@@ -75,4 +76,3 @@
     </div>
 
 @endsection
-

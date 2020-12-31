@@ -30,13 +30,13 @@ class CintasController extends Controller
 
         //$cintas = Auth::user()->cintas;
 
-        
+        //$likesUsuario = auth()->user()->likesUsuarios;    
 
-        $usuario = auth()->user()->id;
+        $usuario = auth()->user();
 
-        $cintas = Cinta::where("user_id",$usuario)->paginate(1);
+        $cintas = Cinta::where("user_id",$usuario->id)->paginate(2);
 
-        return view("cintas.index",compact("cintas"));
+        return view("cintas.index",compact("cintas","usuario"));
     }
 
     /**
@@ -114,8 +114,8 @@ class CintasController extends Controller
 
         $like = (auth()->user()) ? auth()->user()->likesUsuarios->contains($cinta->id) : false;
 
-        $cantidadLikes = auth()->user()->likesUsuarios->count();
-        //$cantidadLikes = $cinta->likesCinta->count();
+        //$cantidadLikes = auth()->user()->likesUsuarios->count();
+        $cantidadLikes = $cinta->likesCinta->count();
 
     
         return view("cintas.show")->with("cinta",$cinta)->with("like",$like)->with("cantidadLikes",$cantidadLikes);

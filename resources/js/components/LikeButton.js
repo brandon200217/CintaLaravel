@@ -19,51 +19,63 @@ export const LikeButton = ({cantidadLikes=0,idCinta,likes}) => {
     let LikeActual = BuscarlikeActual();
 
     const [likeState, likeSetstate] = useState({
-        likeClass:LikeActual
-        
+        likeClass:LikeActual,
+        likesUser:cantidadLikes.cantidadLikes,
     });
 
-    const {likeClass} = likeState;
+    const {likeClass,likesUser} = likeState;
+
 
     useEffect(() => {
         
         return () => {
             console.log("Activando Componente");
         }
-    }, [likeState])
+    }, [likeState,likesUser])
 
-
+    useEffect(() => {
+        
+        return () => {
+            console.log("Activando Componente likes");
+        }
+    }, [likesUser])
 
     const LikeButton = () => {
 
         axios.post('/cintas/' + idCinta.idCinta)
         .then( (respuesta) =>   {
-            
+
             if(likeClass == "like-btn"){
                 
                 likeSetstate({ 
-                    likeClass:'like-btn like-active'
+                    likeClass:'like-btn like-active',
+                    likesUser:parseInt(likesUser)+1
                 })
             }
             
             else{
                 likeSetstate({ 
-                    likeClass:'like-btn'
+                    likeClass:'like-btn',
+                    likesUser:likesUser-1
                 })
             }
         
         }).catch( error => {
-            console.log(error);
+            if(error.response.status === 401){
+
+                window.location = '/register';
+
+            }
         })
 
     }
 
     return (
         <>
-            <div>
-                {
+            <div className=" justify-content-center text-center">
+                
                     <span className = {likeClass} onClick = { LikeButton}></span>
-                }
+                    <p>{likesUser} personas les gusto esta critica</p>
             </div>
         </>
     )
@@ -76,8 +88,7 @@ if (document.getElementById('like')) {
     let cantidadLikes = document.getElementById("like").getAttribute("cantidadLikes");
     let idCinta = document.getElementById("like").getAttribute("id-Cinta");
     let likeUser = document.getElementById("like").getAttribute("likeUser");
-    
-    console.log(cantidadLikes);
+
 
     ReactDOM.render(<LikeButton cantidadLikes={{cantidadLikes}} idCinta = {{idCinta}} likes = {{likeUser}} />, document.getElementById('like'));
 }
