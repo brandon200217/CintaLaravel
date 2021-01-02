@@ -20,7 +20,7 @@ require('./components/LikeButton');
 
 jQuery(document).ready(function(){
     jQuery('.owl-carousel').owlCarousel({
-        margin:10,
+        margin:25,
         loop:true,
         autoplay:true,
         autoplayHoverPause:true,

@@ -17,16 +17,21 @@ class InicioController extends Controller
 
     public function index(){
 
-
+        // Obtener criticas nuevas
         //$masVotados = Cinta::has("likes",">",2)->get();
         $masVotados = Cinta::withCount('likesCinta')->orderBy("likes_cinta_count","desc")->take(3)->get();
 
+
         $categorias = Categoria::all();
+        
+        //Cintas por categoria
         $cintas=[];
 
         foreach ($categorias as  $categoria) {
-            $cintas[Str::slug($categoria->nombre)][] = Cinta::where("user_id",$categoria->id)->get();
+            $cintas[Str::slug($categoria->nombre)][] = Cinta::where("categoria_id",$categoria->id)->orderBy("categoria_id","desc")->get();
         }
+
+      
         //$ultimasPublicaciones = Cinta::orderBy("created_at","ASC")->limit(6)->get();
         //oldest los mas viejos
         $ultimasPublicaciones = Cinta::latest()->limit(6)->get();
